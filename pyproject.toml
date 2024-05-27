@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "kloch_rezenv"
+version = "0.1.0"
+description = "Launcher plugin for Kloch implementing support for rez."
+authors = ["Liam Collod <monsieurlixm@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.7"
+kloch = { tag = ">=0.7.0", git = "https://github.com/knotsanimation/kloch.git"}
+
+[tool.poetry.group.dev.dependencies]
+python = ">=3.9"
+pytest = { version = ">=7.2.0", python = ">=3.7" }
+black = { version = "^24.4.2", python = ">=3.9" }
+# XXX: issue with CI on unix machine
+typing-extensions = { version = "<4.8" }
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
