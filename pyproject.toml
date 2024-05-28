@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.7"
-kloch = { tag = ">=0.7.0", git = "https://github.com/knotsanimation/kloch.git"}
+kloch = { tag = "v0.7.0", git = "https://github.com/knotsanimation/kloch.git"}
 
 [tool.poetry.group.dev.dependencies]
 python = ">=3.9"
@@ -15,6 +15,15 @@ pytest = { version = ">=7.2.0", python = ">=3.7" }
 black = { version = "^24.4.2", python = ">=3.9" }
 # XXX: issue with CI on unix machine
 typing-extensions = { version = "<4.8" }
+
+# allow dev dependencies to be installed by other package manager
+[optional-dependencies]
+dev = [
+    "pytest>=7.2.0; python >=3.7",
+    "black>=24.4; python >=3.9",
+    "typing-extensions<4.8",
+]
+
 
 [build-system]
 requires = ["poetry-core"]
