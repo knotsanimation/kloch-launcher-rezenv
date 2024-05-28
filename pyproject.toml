@@ -1,3 +1,13 @@
+[project]
+name = "kloch_rezenv"
+dynamic = [
+    "version",
+    "description",
+    "authors",
+    "readme",
+    "dependencies",
+]
+
 [tool.poetry]
 name = "kloch_rezenv"
 version = "0.1.0"
@@ -7,7 +17,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.7"
-kloch = { tag = "v0.7.0", git = "https://github.com/knotsanimation/kloch.git"}
+kloch = { tag = "v0.7.0", git = "https://github.com/knotsanimation/kloch.git" }
 
 [tool.poetry.group.dev.dependencies]
 python = ">=3.9"
