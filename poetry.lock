@@ -118,7 +118,7 @@ files = [
 
 [[package]]
 name = "kloch"
-version = "0.8.1"
+version = "0.9.0"
 description = "Environment Manager CLI wrapping package managers calls as serialized config file"
 optional = false
 python-versions = ">=3.7"
@@ -136,8 +136,8 @@ tests = ["pytest (==7.3.2)", "typing-extensions (<4.8)"]
 [package.source]
 type = "git"
 url = "https://github.com/knotsanimation/kloch.git"
-reference = "v0.8.1"
-resolved_reference = "d2738a3e3adf12007e9e7c7b615750b4ba25f297"
+reference = "v0.9.0"
+resolved_reference = "cf33f409686afd37c4d26ba66d108fc3ab613cf0"
 
 [[package]]
 name = "mypy-extensions"
@@ -331,4 +331,4 @@ dev = ["black", "pytest", "typing-extensions"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.7"
-content-hash = "cfc1387514a3eb4cc142e1e65a2abbbf065853043eba08163d01b9d98ab4c6b1"
+content-hash = "49c10097229ec66576a5a97a16ff4ab8e66e537a269e996b0837ecae27181582"
