@@ -40,7 +40,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           update-environment: false
       - run: poetry env use ${{ steps.setup-python.outputs.python-path }}
-      - run: poetry install --extras "tests" --no-interaction --no-cache -vvv
+      - run: poetry install --extras "dev" --no-interaction --no-cache -vvv
       - run: poetry run pytest ./tests
         name: run pytest (all)
         if: ${{ !github.event.pull_request.draft }}
