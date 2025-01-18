@@ -21,3 +21,6 @@ coverage.xml
 
 # logging files
 *.log
+
+# project specific
+.cache/
