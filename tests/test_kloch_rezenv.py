@@ -1,4 +1,5 @@
 import os
+import stat
 import subprocess
 import sys
 from typing import Dict
@@ -26,7 +27,9 @@ def test__RezEnvLauncher(monkeypatch, tmp_path):
         rezenv_path = rezenv_dir / "rez-env.EXE"
     else:
         rezenv_path = rezenv_dir / "rez-env"
-    rezenv_path.write_text("placeholder")
+    rezenv_path.write_text("echo placeholder")
+    current_stats = os.stat(rezenv_path)
+    os.chmod(rezenv_path, current_stats.st_mode | stat.S_IEXEC)
 
     monkeypatch.setattr(subprocess, "run", patched_subprocess)
     environ_new_path = str(rezenv_dir) + os.pathsep + os.environ.get("PATH", "")
