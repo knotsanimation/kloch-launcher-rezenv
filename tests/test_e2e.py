@@ -7,6 +7,8 @@ import urllib.request
 import zipfile
 from pathlib import Path
 
+import pytest
+
 import kloch
 import kloch_rezenv
 
@@ -78,6 +80,7 @@ def install_rez(
     shutil.rmtree(rez_tmp_dir)
 
 
+@pytest.mark.slow
 def test__e2e_kloch_rezenv(tmp_path, data_dir):
 
     rez_version = "2.114.1"
