@@ -100,7 +100,7 @@ def test__e2e_kloch_rezenv(tmp_path, data_dir):
         check_command = ["--", "echo", "$Env:REZ_VERSION", "$Env:TESTPKG_CONFIRM_VAR"]
     else:
         rez_bin_dir = REZ_INSTALL_CACHE / "bin" / "rez"
-        check_command = ["--", "echo", "$REZ_VERSION", "$TESTPKG_CONFIRM_VAR"]
+        check_command = ["--", "echo", "$REZ_VERSION\n$TESTPKG_CONFIRM_VAR"]
 
     environ = os.environ.copy()
     environ[kloch.Environ.CONFIG_LAUNCHER_PLUGINS] = kloch_rezenv.__name__
