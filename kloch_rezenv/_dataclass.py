@@ -1,6 +1,7 @@
 import dataclasses
 import logging
 import os
+import shutil
 import subprocess
 from pathlib import Path
 from typing import Dict
@@ -44,16 +45,24 @@ class RezEnvLauncher(BaseLauncher):
 
         If asked, a rez config is created on the fly before starting rez-env.
         """
+
         requires = [
             f"{pkg_name}-{pkg_version}"
             for pkg_name, pkg_version in self.requires.items()
         ]
 
+        environ = self.environ.copy()
+        environ_path = environ.get("PATH")
+        rezenv_path = shutil.which("rez-env", path=environ_path)
+        if not rezenv_path:
+            raise FileNotFoundError(
+                f"Could not find path to the rez-env executable; "
+                f"searched PATH variable '{environ_path}'"
+            )
+
         _command = self.command + (command or [])
         _command = ["--"] + command if command else []
-        _command = ["rez-env"] + self.params + requires + _command
-
-        environ = self.environ.copy()
+        _command = [rezenv_path] + self.params + requires + _command
 
         if self.config:
             config_path = tmpdir / "rezconfig.yml"
@@ -69,6 +78,6 @@ class RezEnvLauncher(BaseLauncher):
         LOGGER.debug(
             f"executing rez command={_command}; environ={environ}; cwd={self.cwd}"
         )
-        result = subprocess.run(_command, shell=True, env=environ, cwd=self.cwd)
+        result = subprocess.run(_command, env=environ, cwd=self.cwd)
 
         return result.returncode

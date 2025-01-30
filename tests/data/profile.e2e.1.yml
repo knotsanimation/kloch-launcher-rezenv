@@ -1,0 +1,17 @@
+__magic__: kloch_profile:4
+identifier: rezenv-plugin-test
+version: 0.1.0
+launchers:
+  .base:
+    environ:
+      PATH:
+        - $PATH
+        - $__TEST_REZ_INSTALL_DIR
+  rezenv:
+    requires:
+      testpkg: 1.2.3
+    params:
+      - "-vvv"
+  rezenv@os=windows:
+    config:
+      default_shell: "powershell"
